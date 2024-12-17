@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {"@/*": ["src/*"]},
+    "target": "es5",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
+    "jsx": "react-jsx",
+  },
+  "include": [
+    "src",
+    "@types",
+    "node_modules/cypress/types/cypress-global-vars.d.ts"
+  ],
+}

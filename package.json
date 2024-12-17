@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "",
   "license": "ISC",
+  "type": "module",
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
@@ -13,8 +14,14 @@
     "prettier:fix": "prettier --write ."
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "prettier --write"],
-    "*.ts": ["eslint --fix", "prettier --write"]
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
