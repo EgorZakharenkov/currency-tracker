@@ -1,0 +1,16 @@
+<svg width="80.000000" height="80.000000" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip1_891">
+			<rect id="Frame" rx="0.000000" width="48.250000" height="48.250000" transform="translate(15.875000 15.875000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<rect id="Rectangle 3" rx="8.000000" width="80.000000" height="80.000000" fill="#2A4628" fill-opacity="1.000000"/>
+	<rect id="Frame" rx="0.000000" width="48.250000" height="48.250000" transform="translate(15.875000 15.875000)" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip1_891)">
+		<path id="Vector" d="M49.49 31.07C49.07 29.89 48.32 28.86 47.31 28.12C46.31 27.38 45.11 26.95 43.86 26.9L35.53 26.9C33.87 26.9 32.28 27.56 31.11 28.73C29.94 29.9 29.28 31.49 29.28 33.15C29.28 34.81 29.94 36.4 31.11 37.57C32.28 38.74 33.87 39.4 35.53 39.4L43.86 39.4C45.52 39.4 47.11 40.06 48.28 41.23C49.46 42.4 50.11 43.99 50.11 45.65C50.11 47.31 49.46 48.9 48.28 50.07C47.11 51.24 45.52 51.9 43.86 51.9L35.53 51.9C34.28 51.85 33.08 51.42 32.08 50.68C31.08 49.94 30.32 48.91 29.91 47.73" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="3.500000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Vector" d="M40 20.95L40 27.2M40 52.2L40 58.45" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="3.500000" stroke-linejoin="round" stroke-linecap="round"/>
+	</g>
+</svg>

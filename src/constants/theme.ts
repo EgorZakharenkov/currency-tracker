@@ -1,5 +1,6 @@
 export const theme = {
   fontSizes: {
+    min: '16',
     xs: '20',
     sm: '24',
     md: '28',
@@ -32,6 +33,7 @@ export const theme = {
     circle: '20',
     container: '1280',
     card: '550',
+    modal: '600',
   },
   heights: {
     select: '180',
@@ -61,6 +63,7 @@ export const darkTheme = {
     gradientBg: 'linear-gradient(225deg, #0a0a0a 0%, #003300 50%, #0a0a0a 100%);',
     activeLink: '#4e4d4d',
     backgroundCard: '#202025',
+    overlay: '#00000080',
   },
 };
 export const lightTheme = {
@@ -76,5 +79,6 @@ export const lightTheme = {
     gradient: 'linear-gradient(92.29deg, #00CE2C, #AEDF23, #A3DC00);',
     gradientBg: 'linear-gradient(225deg, #121212 11.632%, #24794000 91.137%)',
     backgroundCard: '#202025',
+    overlay: '#00000080',
   },
 };
