@@ -7,6 +7,10 @@ interface StateType {
     updatedAt: string;
   }[];
   currencyDataLoading: boolean;
+  convertValue: {
+    rate: number;
+  };
+  convertValueLoading: boolean;
 }
 export const getCurrencyData = createAsyncThunk('getCurrencyData', async () => {
   const baseCurrency = 'USD';
@@ -28,14 +32,32 @@ export const getCurrencyData = createAsyncThunk('getCurrencyData', async () => {
       updatedAt: time,
     }));
   } catch (error) {
-    console.error('Error fetching exchange rates:', error);
-    throw error;
+    return error.data.message;
   }
 });
+
+export const getConvertData = createAsyncThunk(
+  'getConvertData',
+  async ({ baseCurrency, convertCurrency }: { baseCurrency: string; convertCurrency: string }) => {
+    try {
+      const response = await axios.get(`https://rest.coinapi.io/v1/exchangerate/${baseCurrency}/${convertCurrency}`, {
+        headers: {
+          Accept: 'application/json',
+          'X-CoinAPI-Key': process.env.CURRENCY_API,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return error.data.message;
+    }
+  },
+);
 
 const initialState: StateType = {
   currencyData: [],
   currencyDataLoading: false,
+  convertValue: null,
+  convertValueLoading: false,
 };
 
 const CurrencySlice = createSlice({
@@ -52,6 +74,16 @@ const CurrencySlice = createSlice({
     });
     builder.addCase(getCurrencyData.rejected, (state) => {
       state.currencyDataLoading = true;
+    });
+    builder.addCase(getConvertData.pending, (state) => {
+      state.convertValueLoading = true;
+    });
+    builder.addCase(getConvertData.fulfilled, (state, action) => {
+      state.currencyDataLoading = false;
+      state.convertValue = action.payload;
+    });
+    builder.addCase(getConvertData.rejected, (state) => {
+      state.convertValueLoading = true;
     });
   },
 });
