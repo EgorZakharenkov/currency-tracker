@@ -1,3 +1,3 @@
 export const TimeLine = () => {
-  return <div>TimeLine</div>;
+  return <div>TimeLine </div>;
 };
