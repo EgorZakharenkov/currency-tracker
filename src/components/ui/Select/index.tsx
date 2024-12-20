@@ -17,7 +17,7 @@ interface SelectProps {
 export const Select: FC<SelectProps> = ({ setSelected, options, selected }) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prevState) => !prevState);
   };
   const handleSelected = (value: string) => {
     setSelected(value);

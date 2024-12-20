@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+
+import { ApiUrl } from '@/constants/api';
 interface StateType {
   currencyData: {
     currency: string;
@@ -17,7 +19,7 @@ export const getCurrencyData = createAsyncThunk('getCurrencyData', async () => {
   const targetCurrencies = ['USD', 'ARS', 'CAD', 'JPY', 'AUD', 'CNY', 'EUR', 'BTC'].join(',');
 
   try {
-    const response = await axios.get(`https://rest.coinapi.io/v1/exchangerate/${baseCurrency}`, {
+    const response = await axios.get(`${ApiUrl}/exchangerate/${baseCurrency}`, {
       headers: {
         Accept: 'application/json',
         'X-CoinAPI-Key': process.env.CURRENCY_API,
@@ -40,7 +42,7 @@ export const getConvertData = createAsyncThunk(
   'getConvertData',
   async ({ baseCurrency, convertCurrency }: { baseCurrency: string; convertCurrency: string }) => {
     try {
-      const response = await axios.get(`https://rest.coinapi.io/v1/exchangerate/${baseCurrency}/${convertCurrency}`, {
+      const response = await axios.get(`${ApiUrl}/exchangerate/${baseCurrency}/${convertCurrency}`, {
         headers: {
           Accept: 'application/json',
           'X-CoinAPI-Key': process.env.CURRENCY_API,

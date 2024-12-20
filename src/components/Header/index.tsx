@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { StyledHeader, WrapperHeader, WrapperLinks } from '@/components/Header/styled';
 import { Link } from '@/components/ui/Link';
 import { Switcher } from '@/components/ui/Switcher';
-import { DARK, LIGHT } from '@/constants';
 import { images } from '@/constants/images';
 import { routes } from '@/constants/routes';
+import { DARK, LIGHT } from '@/constants/themeConstants';
 import { useAppDispatch } from '@/hooks/redux-hooks';
 import { setTheme } from '@/store/Slices/Theme';
 
@@ -13,7 +13,7 @@ export const Header = () => {
   const [active, setActive] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const handleSwitch = () => {
-    setActive(!active);
+    setActive((prevState) => !prevState);
     dispatch(setTheme(active ? DARK : LIGHT));
   };
   return (

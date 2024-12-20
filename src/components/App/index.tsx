@@ -7,9 +7,9 @@ import { Banner } from '@/components/Banner';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { LastUpdate } from '@/components/LastUpdate';
-import { DARK } from '@/constants';
 import { routes } from '@/constants/routes';
 import { darkTheme, lightTheme, theme } from '@/constants/theme';
+import { DARK } from '@/constants/themeConstants';
 import { useAppSelector } from '@/hooks/redux-hooks';
 import GlobalStyle from '@/styles/global-styled';
 
