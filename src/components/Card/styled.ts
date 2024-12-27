@@ -9,6 +9,7 @@ export const CardWrapper = styled.div`
   background: ${({ theme }) => theme.colors.backgroundCard};
   border-radius: ${({ theme }) => theme.borderRadius.sm}px;
   border: 1px solid ${({ theme }) => theme.colors.gray};
+  cursor: pointer;
 `;
 
 export const WrapperInfo = styled.div`

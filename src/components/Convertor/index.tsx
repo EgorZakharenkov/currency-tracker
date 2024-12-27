@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 
-import { ConverterContainer, CurrentCurrencyBlock, Input, ResultBlock } from '@/components/Convertor/styled';
+import { ConverterContainer, CurrentCurrencyBlock, ResultBlock, WrapperBtns } from '@/components/Convertor/styled';
+import { Input } from '@/components/ui/Input/styled';
 import { Select } from '@/components/ui/Select';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux-hooks';
 import { getConvertData } from '@/store/Slices/Currency';
@@ -47,9 +48,6 @@ export const Converter: FC<ConverterProps> = ({ current }) => {
     setSelectedCurrency(currency);
     setResult('');
   };
-  const handleConvertResult = () => {
-    calculateResult(amount);
-  };
 
   return (
     <ConverterContainer>
@@ -57,9 +55,9 @@ export const Converter: FC<ConverterProps> = ({ current }) => {
         <span>Current Currency: {current}</span>
         <Input type="number" value={amount} onChange={handleAmountChange} placeholder="Enter amount" />
       </CurrentCurrencyBlock>
-
-      <Select options={options} selected={selectedCurrency} setSelected={handleCurrencyChange} />
-      <button onClick={handleConvertResult}>convert</button>
+      <WrapperBtns>
+        <Select options={options} selected={selectedCurrency} setSelected={handleCurrencyChange} />
+      </WrapperBtns>
 
       <ResultBlock>
         {result ? `Converted Amount: ${result} ${selectedCurrency}` : 'Enter an amount to convert'}

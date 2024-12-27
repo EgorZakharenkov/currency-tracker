@@ -2,7 +2,7 @@ import * as S from './styled';
 
 import { Link } from '@/components/ui/Link';
 import { images } from '@/constants/images';
-import { Text } from '@/styles/styled';
+import { SubTitle, Text } from '@/styles/styled';
 
 const fakeData = [
   {
@@ -36,9 +36,9 @@ export const Footer = () => {
         <S.WrapperListMenu>
           {fakeData.map(({ title, list }) => (
             <S.MenuItem>
-              <Text size="md" color="white">
+              <SubTitle size="md" color="white">
                 {title}
-              </Text>
+              </SubTitle>
               <S.WrapperListLinks>
                 {list.map((link) => (
                   <Link text={link} path={link} key={link} />
@@ -52,3 +52,17 @@ export const Footer = () => {
     </S.StyledFooter>
   );
 };
+
+class Repository<T> {
+  results = [];
+  add<T>(data: T) {
+    this.results.push(data);
+  }
+  removeById(id: number) {
+    this.results = this.results.filter((result) => result.id !== id);
+  }
+  getById(id) {
+    return this.results.find((result) => result.id === id);
+  }
+}
+const userRepository = new Repository<{ id: number; name: string }>();

@@ -6,20 +6,20 @@ import { Option } from '@/components/ui/Option';
 import { images } from '@/constants/images';
 
 type Option = {
-  value: string;
+  value: string | number;
 };
 
 interface SelectProps {
   options: Option[];
-  setSelected: (value: string) => void;
-  selected: string;
+  setSelected: (value: string | number) => void;
+  selected: string | number;
 }
 export const Select: FC<SelectProps> = ({ setSelected, options, selected }) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => {
     setIsOpen((prevState) => !prevState);
   };
-  const handleSelected = (value: string) => {
+  const handleSelected = (value: string | number) => {
     setSelected(value);
     setIsOpen(false);
   };

@@ -1,0 +1,19 @@
+<svg width="80.000000" height="80.000000" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip1_1198">
+			<rect rx="0.000000" width="49.000000" height="49.000000" transform="translate(15.500000 15.500000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<rect rx="8.000000" width="80.000000" height="80.000000" fill="#142E67" fill-opacity="1.000000"/>
+	<rect rx="0.000000" width="49.000000" height="49.000000" transform="translate(15.500000 15.500000)" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip1_1198)">
+		<path d="M21.25 52.5L28.08 28.59C28.17 28.26 28.37 27.97 28.64 27.77C28.91 27.56 29.24 27.45 29.58 27.45C29.92 27.45 30.25 27.56 30.52 27.77C30.79 27.97 30.99 28.26 31.08 28.59L37.91 52.5" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path d="M58.75 27.5L50.41 27.5C48.75 27.5 47.16 28.15 45.99 29.33C44.82 30.5 44.16 32.09 44.16 33.75C44.16 35.4 44.82 36.99 45.99 38.16C47.16 39.34 48.75 40 50.41 40L52.5 40C54.15 40 55.74 40.65 56.91 41.83C58.09 43 58.75 44.59 58.75 46.25C58.75 47.9 58.09 49.49 56.91 50.66C55.74 51.84 54.15 52.5 52.5 52.5L44.16 52.5" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path d="M50.41 56.66L50.41 52.5" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path d="M52.5 27.5L52.5 23.33" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path d="M24.37 44.16L34.79 44.16" stroke="#FFFFFF" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+	</g>
+</svg>
