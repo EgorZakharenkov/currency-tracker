@@ -2,8 +2,8 @@ import { FC } from 'react';
 
 import { CardWrapper, WrapperInfo } from './styled';
 
-import { images } from '@/constants/images';
-import { Text } from '@/styles/styled';
+import { currencyImages } from '@/constants/images';
+import { SubTitle, Text } from '@/styles/styled';
 
 interface CardProps {
   currency: string;
@@ -14,11 +14,11 @@ interface CardProps {
 export const Card: FC<CardProps> = ({ currency, valueInUSD, onClick }) => {
   return (
     <CardWrapper onClick={onClick}>
-      <img src={images.dollarIcon} alt="card icon" />
+      <img src={currencyImages[currency.toLowerCase()]} alt="card icon" />
       <WrapperInfo>
-        <Text size="lg" color="lightGray">
+        <SubTitle size="lg" color="lightGray">
           {currency}
-        </Text>
+        </SubTitle>
         <Text size="md" color="gray">
           {valueInUSD}$
         </Text>

@@ -1,63 +1,68 @@
-import {
-  FooterCopyRight,
-  FooterTitle,
-  MenuItem,
-  StyledFooter,
-  Wrapper,
-  WrapperDescription,
-  WrapperInfo,
-  WrapperListLinks,
-  WrapperListMenu,
-} from './styled';
+import * as S from './styled';
 
 import { Link } from '@/components/ui/Link';
 import { images } from '@/constants/images';
-import { Text } from '@/styles/styled';
+import { SubTitle, Text } from '@/styles/styled';
+
+const fakeData = [
+  {
+    title: 'General',
+    list: ['Market', 'Service'],
+  },
+  {
+    title: 'Product',
+    list: ['Sparks', 'Snaps'],
+  },
+  {
+    title: 'Community',
+    list: ['Ideas', 'Streams'],
+  },
+];
 
 export const Footer = () => {
-  const fakeData = [
-    {
-      title: 'General',
-      list: ['Market', 'Service'],
-    },
-    {
-      title: 'Product',
-      list: ['Sparks', 'Snaps'],
-    },
-    {
-      title: 'Community',
-      list: ['Ideas', 'Streams'],
-    },
-  ];
   return (
-    <StyledFooter>
-      <Wrapper>
-        <WrapperDescription>
-          <WrapperInfo>
+    <S.StyledFooter>
+      <S.Wrapper>
+        <S.WrapperDescription>
+          <S.WrapperInfo>
             <img src={images.headerLogo} alt="footerLogo" />
-            <FooterTitle>Modsen Currency Tracker</FooterTitle>
-          </WrapperInfo>
+            <S.FooterTitle>Modsen Currency Tracker</S.FooterTitle>
+          </S.WrapperInfo>
           <Text size="sm" color="white">
             Since then, the company has grown organically to. Starsup is the world's largest trading platform, with $12
             billion worth of currency trading and 500,000 tickets sold daily to tens of thousands of traders worldwide.
           </Text>
-        </WrapperDescription>
-        <WrapperListMenu>
+        </S.WrapperDescription>
+        <S.WrapperListMenu>
           {fakeData.map(({ title, list }) => (
-            <MenuItem>
-              <Text size="md" color="white">
+            <S.MenuItem>
+              <SubTitle size="md" color="white">
                 {title}
-              </Text>
-              <WrapperListLinks>
+              </SubTitle>
+              <S.WrapperListLinks>
                 {list.map((link) => (
                   <Link text={link} path={link} key={link} />
                 ))}
-              </WrapperListLinks>
-            </MenuItem>
+              </S.WrapperListLinks>
+            </S.MenuItem>
           ))}
-        </WrapperListMenu>
-      </Wrapper>
-      <FooterCopyRight>Startsup © 2023-2024, All Rights Reserved</FooterCopyRight>
-    </StyledFooter>
+        </S.WrapperListMenu>
+      </S.Wrapper>
+      <S.FooterCopyRight>Startsup © 2023-2024, All Rights Reserved</S.FooterCopyRight>
+    </S.StyledFooter>
   );
 };
+
+class Repository<T> {
+  results = [];
+  add<T>(data: T) {
+    this.results.push(data);
+  }
+  removeById(id: number) {
+    this.results = this.results.filter((result) => result.id !== id);
+  }
+  getById(id) {
+    return this.results.find((result) => result.id === id);
+  }
+}
+const userRepository = new Repository<{ id: number; name: string }>();

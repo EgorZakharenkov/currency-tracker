@@ -24,11 +24,17 @@ export const ContainerValue = styled.div`
   }
 `;
 export const OptionsList = styled.div<OptionListProps>`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   max-height: ${({ isOpen, theme }) => (isOpen ? theme.heights.select : '0')}px;
   display: flex;
   flex-direction: column;
-  transition: 0.3s;
+  transition: max-height 0.3s ease;
   overflow: auto;
+  background-color: ${({ theme }) => theme.colors.black};
+  z-index: 10;
 
   &::-webkit-scrollbar {
     width: ${({ theme }) => theme.paddings.xs}px;
@@ -44,7 +50,6 @@ export const OptionsList = styled.div<OptionListProps>`
     border-radius: ${({ theme }) => theme.paddings.xs}px;
   }
 `;
-
 export const Arrow = styled.img<OptionListProps>`
   transition: 0.3s;
   rotate: ${({ isOpen }) => (isOpen ? '180deg' : '0deg')};

@@ -64,6 +64,7 @@ export const darkTheme = {
     activeLink: '#4e4d4d',
     backgroundCard: '#202025',
     overlay: '#00000080',
+    spinner: '#3498db',
   },
 };
 export const lightTheme = {
@@ -80,5 +81,6 @@ export const lightTheme = {
     gradientBg: 'linear-gradient(225deg, #121212 11.632%, #24794000 91.137%)',
     backgroundCard: '#202025',
     overlay: '#00000080',
+    spinner: '#3498db',
   },
 };
