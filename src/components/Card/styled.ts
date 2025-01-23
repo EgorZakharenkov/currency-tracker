@@ -10,6 +10,9 @@ export const CardWrapper = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.sm}px;
   border: 1px solid ${({ theme }) => theme.colors.gray};
   cursor: pointer;
+  @media (max-width: ${({ theme }) => theme.media.mobile}px) {
+    min-width: 100%;
+  }
 `;
 
 export const WrapperInfo = styled.div`

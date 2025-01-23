@@ -15,12 +15,12 @@ export const FormTitle = styled.h3`
   text-align: center;
   margin-bottom: ${({ theme }) => theme.paddings.gap30}px;
   font-size: ${({ theme }) => theme.fontSizes.md}px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const Label = styled.label`
   font-size: ${({ theme }) => theme.fontSizes.sm}px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.primary};
   margin-bottom: ${({ theme }) => theme.paddings.sm}px;
 `;
 

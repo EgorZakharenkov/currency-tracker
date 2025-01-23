@@ -2,9 +2,12 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 
+import { PersistGate } from 'redux-persist/integration/react';
+
 import { App } from './components/App';
 
-import { store } from '@/store';
+import { Loader } from '@/components/Loader';
+import { persistor, store } from '@/store';
 
 const rootElement = document.querySelector('#root');
 const root = createRoot(rootElement);
@@ -12,9 +15,9 @@ const root = createRoot(rootElement);
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <PersistGate loading={'Загрузка...'} persistor={persistor}>
+        <App />
+      </PersistGate>
     </BrowserRouter>
   </Provider>,
 );
-
-// todo с темой поменять

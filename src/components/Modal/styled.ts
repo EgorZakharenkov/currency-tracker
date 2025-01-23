@@ -25,6 +25,7 @@ export const ModalContainer = styled.div`
   padding: ${({ theme }) => theme.paddings.lg}px;
   border-radius: ${({ theme }) => theme.borderRadius.sm}px;
   max-width: ${({ theme }) => theme.widths.modal}px;
+  margin: ${({ theme }) => theme.paddings.xs}px;
   width: 100%;
   position: relative;
 `;

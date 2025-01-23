@@ -28,7 +28,7 @@ export const Footer = () => {
             <img src={images.headerLogo} alt="footerLogo" />
             <S.FooterTitle>Modsen Currency Tracker</S.FooterTitle>
           </S.WrapperInfo>
-          <Text size="sm" color="white">
+          <Text size="sm" color="primary">
             Since then, the company has grown organically to. Starsup is the world's largest trading platform, with $12
             billion worth of currency trading and 500,000 tickets sold daily to tens of thousands of traders worldwide.
           </Text>
@@ -36,7 +36,7 @@ export const Footer = () => {
         <S.WrapperListMenu>
           {fakeData.map(({ title, list }) => (
             <S.MenuItem>
-              <SubTitle size="md" color="white">
+              <SubTitle size="md" color="primary">
                 {title}
               </SubTitle>
               <S.WrapperListLinks>
@@ -52,17 +52,3 @@ export const Footer = () => {
     </S.StyledFooter>
   );
 };
-
-class Repository<T> {
-  results = [];
-  add<T>(data: T) {
-    this.results.push(data);
-  }
-  removeById(id: number) {
-    this.results = this.results.filter((result) => result.id !== id);
-  }
-  getById(id) {
-    return this.results.find((result) => result.id === id);
-  }
-}
-const userRepository = new Repository<{ id: number; name: string }>();

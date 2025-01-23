@@ -6,6 +6,11 @@ export const StyledFooter = styled.footer`
   gap: ${({ theme }) => theme.paddings.gap50}px;
   max-width: ${({ theme }) => theme.widths.container}px;
   margin: ${({ theme }) => theme.paddings.gap50}px auto;
+
+  @media (max-width: ${({ theme }) => theme.widths.container}px) {
+    max-width: 100%;
+    padding: ${({ theme }) => theme.paddings.gap30}px;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -13,6 +18,9 @@ export const Wrapper = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   gap: ${({ theme }) => theme.paddings.gap100}px;
+  @media (max-width: ${({ theme }) => theme.widths.container}px) {
+    flex-direction: column;
+  }
 `;
 
 export const WrapperDescription = styled.div`
@@ -40,13 +48,17 @@ export const FooterTitle = styled.h2`
 export const FooterDescriptionText = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.sm}px;
   font-weight: ${({ theme }) => theme.weights.xs};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const WrapperListMenu = styled.div`
   display: flex;
   align-items: flex-start;
   gap: ${({ theme }) => theme.paddings.gap70}px;
+  @media (max-width: ${({ theme }) => theme.media.mobile}px) {
+    flex-wrap: wrap;
+    gap: ${({ theme }) => theme.paddings.gap30}px;
+  }
 `;
 
 export const MenuItem = styled.div`
@@ -56,7 +68,7 @@ export const MenuItem = styled.div`
 `;
 export const MenuTitle = styled.h2`
   font-size: ${({ theme }) => theme.fontSizes.md}px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.primary};
 
   font-weight: ${({ theme }) => theme.weights.sm};
 `;

@@ -7,7 +7,7 @@ export const ContainerSelect = styled.div`
   position: relative;
   width: ${({ theme }) => theme.widths.select}px;
   border-radius: ${({ theme }) => theme.paddings.xs}px;
-  background-color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.colors.secondary};
   cursor: pointer;
 `;
 
@@ -18,7 +18,7 @@ export const ContainerValue = styled.div`
   padding: 0 ${({ theme }) => theme.paddings.sm}px;
 
   span {
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.primary};
     font-size: ${({ theme }) => theme.fontSizes.xs}px;
     padding: ${({ theme }) => theme.paddings.xs}px ${({ theme }) => theme.paddings.sm}px;
   }
@@ -33,7 +33,7 @@ export const OptionsList = styled.div<OptionListProps>`
   flex-direction: column;
   transition: max-height 0.3s ease;
   overflow: auto;
-  background-color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.colors.secondary};
   z-index: 10;
 
   &::-webkit-scrollbar {
@@ -41,7 +41,7 @@ export const OptionsList = styled.div<OptionListProps>`
   }
 
   &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.primary};
     border-radius: ${({ theme }) => theme.paddings.xs}px;
   }
 

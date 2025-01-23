@@ -32,7 +32,7 @@ export const WrapperBtns = styled.div`
 `;
 export const Button = styled.button`
   padding: ${({ theme }) => theme.paddings.sm}px ${({ theme }) => theme.paddings.lg}px;
-  background: ${({ theme }) => theme.colors.black};
-  color: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.secondary};
   border-radius: ${({ theme }) => theme.borderRadius.md}px;
 `;
