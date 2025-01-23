@@ -7,6 +7,5 @@ export const ChartCard = styled.div`
 `;
 
 export const ChartBox = styled.div`
-  width: 80%;
   padding: ${({ theme }) => theme.paddings.lg}px;
 `;
