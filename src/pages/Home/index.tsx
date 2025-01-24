@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Card } from '@/components/Card';
 import { Converter } from '@/components/Convertor';
 import { Button } from '@/components/Convertor/styled';
+import { LastUpdate } from '@/components/LastUpdate';
 import { Loader } from '@/components/Loader';
 import { Modal } from '@/components/Modal';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux-hooks';
@@ -49,6 +50,7 @@ export const Home = () => {
   if (currencyDataLoading) return <Loader />;
   return (
     <div>
+      <LastUpdate time="12:30" />
       <Button onClick={updateCurrencyData}>Update data</Button>
       <div>
         {currencyData &&

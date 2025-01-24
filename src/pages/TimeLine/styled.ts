@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  margin-top: ${({ theme }) => theme.paddings.gap70}px;
   width: ${({ theme }) => theme.widths.container}px;
   background: ${({ theme }) => theme.colors.backgroundCard};
   padding: ${({ theme }) => theme.paddings.xl}px;

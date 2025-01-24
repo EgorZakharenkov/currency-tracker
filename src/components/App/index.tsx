@@ -24,7 +24,6 @@ export const App = () => {
         <GlobalStyle />
         <Header />
         <Banner />
-        <LastUpdate time="12:30" />
         <Content>
           <Routes>
             {routes.map(({ element, path }) => (
