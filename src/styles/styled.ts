@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 interface TitleProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  color?: 'white' | 'lightGray' | 'gray';
+  color?: 'primary' | 'lightGray' | 'gray';
   border?: boolean;
 }
 

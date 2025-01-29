@@ -16,6 +16,12 @@ export const CurrentCurrencyBlock = styled.div`
   align-items: center;
   font-size: ${({ theme }) => theme.fontSizes.xs}px;
   color: ${({ theme }) => theme.colors.white};
+
+  @media screen and (max-width: ${({ theme }) => theme.media.mobile}px) {
+    flex-direction: column;
+    align-items: start;
+    gap: ${({ theme }) => theme.paddings.md}px;
+  }
 `;
 
 export const ResultBlock = styled.div`
@@ -24,6 +30,10 @@ export const ResultBlock = styled.div`
   font-weight: ${({ theme }) => theme.weights.lg};
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
+
+  @media screen and (max-width: ${({ theme }) => theme.media.mobile}px) {
+    text-align: start;
+  }
 `;
 export const WrapperBtns = styled.div`
   display: flex;
@@ -32,7 +42,7 @@ export const WrapperBtns = styled.div`
 `;
 export const Button = styled.button`
   padding: ${({ theme }) => theme.paddings.sm}px ${({ theme }) => theme.paddings.lg}px;
-  background: ${({ theme }) => theme.colors.black};
-  color: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.secondary};
   border-radius: ${({ theme }) => theme.borderRadius.md}px;
 `;

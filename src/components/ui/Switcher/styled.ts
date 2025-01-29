@@ -18,7 +18,7 @@ export const SwitchWrapper = styled.div<SwitcherProps>`
 export const Circle = styled.div<SwitcherProps>`
   width: ${({ theme }) => theme.widths.circle}px;
   height: ${({ theme }) => theme.widths.circle}px;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 50%;
   transition: transform 0.3s ease;
   transform: ${({ isActive }) => (isActive ? 'translateX(25px)' : 'translateX(0)')};
