@@ -20,6 +20,7 @@ interface CandleEditFormProps {
 
 export class CandleEditForm extends Component<CandleEditFormProps> {
   fields: (keyof CandleData)[] = ['o', 'h', 'l', 'c'];
+  labels = [{ o: 'Open' }, { h: 'Height' }, { l: 'Low' }, { c: 'Close' }];
 
   handleInputChange = (field: keyof CandleData) => (e: ChangeEvent<HTMLInputElement>) => {
     const { onChange } = this.props;
@@ -32,9 +33,9 @@ export class CandleEditForm extends Component<CandleEditFormProps> {
     return (
       <FormContainer>
         <FormTitle>Edit Candle</FormTitle>
-        {this.fields.map((field) => (
+        {this.fields.map((field, index) => (
           <Field key={field}>
-            <Label>{field.charAt(0).toUpperCase() + field.slice(1)}:</Label>
+            <Label>{this.labels[index][field]}:</Label>
             <Input type="number" value={selectedCandle[field]} onChange={this.handleInputChange(field)} />
           </Field>
         ))}

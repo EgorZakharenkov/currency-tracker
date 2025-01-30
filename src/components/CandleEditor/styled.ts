@@ -19,6 +19,8 @@ export const FormTitle = styled.h3`
 `;
 
 export const Label = styled.label`
+  display: inline-block;
+  width: 80px;
   font-size: ${({ theme }) => theme.fontSizes.sm}px;
   color: ${({ theme }) => theme.colors.primary};
   margin-bottom: ${({ theme }) => theme.paddings.sm}px;

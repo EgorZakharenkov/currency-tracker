@@ -70,6 +70,7 @@ export const darkTheme = {
     backgroundCard: '#202025',
     overlay: '#00000080',
     spinner: '#3498db',
+    search: '#1B2028',
   },
 };
 export const lightTheme = {
@@ -89,5 +90,6 @@ export const lightTheme = {
     backgroundCard: '#202025',
     overlay: '#00000080',
     spinner: '#3498db',
+    search: '#1B2028',
   },
 };
