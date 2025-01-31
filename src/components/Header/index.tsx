@@ -6,11 +6,12 @@ import { Switcher } from '@/components/ui/Switcher';
 import { images } from '@/constants/images';
 import { routes } from '@/constants/routes';
 import { DARK, LIGHT } from '@/constants/themeConstants';
-import { useAppDispatch } from '@/hooks/redux-hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux-hooks';
 import { setTheme } from '@/store/Slices/Theme';
 
 export const Header = () => {
-  const [active, setActive] = useState<boolean>(false);
+  const { theme } = useAppSelector((state) => state.theme);
+  const [active, setActive] = useState<boolean>(theme !== DARK);
   const dispatch = useAppDispatch();
   const handleSwitch = () => {
     setActive((prevState) => !prevState);

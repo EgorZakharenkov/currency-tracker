@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { Card } from '@/components/Card';
 import { Converter } from '@/components/Convertor';
+import { Button } from '@/components/Convertor/styled';
+import { LastUpdate } from '@/components/LastUpdate';
 import { Loader } from '@/components/Loader';
 import { Modal } from '@/components/Modal';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux-hooks';
@@ -26,7 +28,7 @@ export const Home = () => {
     },
     {
       title: 'Quotes',
-      items: currencyData,
+      items: [{ currency: 'USD', valueInUSD: '1' }, ...currencyData],
     },
   ];
 
@@ -42,25 +44,37 @@ export const Home = () => {
     setOpen(false);
   };
 
+  const updateCurrencyData = () => {
+    dispatch(getCurrencyData());
+  };
   if (currencyDataLoading) return <Loader />;
   return (
     <div>
-      {currencyData &&
-        fakeCards.map(({ title, items }) => (
-          <WrapperCardList>
-            <SubTitle size="lg" color="white" border>
-              {title}
-            </SubTitle>
-            <WrapperCards>
-              {items.map(({ currency, valueInUSD }) => (
-                <Card onClick={handleClickCard(currency)} key={currency} currency={currency} valueInUSD={valueInUSD} />
-              ))}
-            </WrapperCards>
-            <Modal onClose={onClose} isOpen={open}>
-              <Converter current={current} />
-            </Modal>
-          </WrapperCardList>
-        ))}
+      <LastUpdate time="12:30" />
+      <Button onClick={updateCurrencyData}>Update data</Button>
+      <div>
+        {currencyData &&
+          fakeCards.map(({ title, items }) => (
+            <WrapperCardList>
+              <SubTitle size="lg" color="primary" border>
+                {title}
+              </SubTitle>
+              <WrapperCards>
+                {items.map(({ currency, valueInUSD }) => (
+                  <Card
+                    onClick={handleClickCard(currency)}
+                    key={currency}
+                    currency={currency}
+                    valueInUSD={valueInUSD}
+                  />
+                ))}
+              </WrapperCards>
+              <Modal onClose={onClose} isOpen={open}>
+                <Converter current={current} />
+              </Modal>
+            </WrapperCardList>
+          ))}
+      </div>
     </div>
   );
 };

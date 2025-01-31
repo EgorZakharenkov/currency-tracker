@@ -5,11 +5,15 @@ import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title
 
 import { CandleEditForm } from '@/components/CandleEditor';
 import { ChartBox, ChartCard } from '@/components/CandlestickChart/styled';
+import { Button } from '@/components/Convertor/styled';
 import { Modal } from '@/components/Modal';
+import { themeColors } from '@/constants/themeConstants';
+import { generateData } from '@/utils/generateData';
+import { chartObserver } from '@/utils/observer';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-interface CandleData {
+export interface CandleData {
   x: number;
   o: number;
   h: number;
@@ -20,7 +24,6 @@ interface CandleData {
 
 interface CandlestickChartProps {
   days?: number;
-  onChartBuilt: () => void;
 }
 
 interface SelectedCandle extends CandleData {
@@ -30,36 +33,14 @@ interface SelectedCandle extends CandleData {
 interface CandlestickChartState {
   selectedCandle: SelectedCandle | null;
   isModalOpen: boolean;
+  isAddModalOpen: boolean;
   updatedChartData: CandleData[];
+  newCandle: Partial<CandleData>;
 }
-
-const generateData = (count: number = 7): CandleData[] => {
-  const data: CandleData[] = [];
-  let lastClose = 1.0;
-
-  for (let i = 0; i < count; i++) {
-    const open = lastClose;
-    const high = open + Math.random() * 0.5;
-    const low = open - Math.random() * 0.5;
-    const close = low + Math.random() * (high - low);
-
-    data.push({
-      x: new Date(2024, 11, i + 1).setHours(0, 0, 0, 0),
-      o: open,
-      h: high,
-      l: low,
-      c: close,
-      s: [open, close],
-    });
-
-    lastClose = close;
-  }
-
-  return data;
-};
 
 const options = {
   responsive: true,
+
   plugins: {
     legend: {
       position: 'top' as const,
@@ -83,18 +64,22 @@ export class CandlestickChart extends Component<CandlestickChartProps, Candlesti
     this.state = {
       selectedCandle: null,
       isModalOpen: false,
+      isAddModalOpen: false,
       updatedChartData: generateData(props.days),
+      newCandle: {
+        x: Date.now(),
+        o: 0,
+        h: 0,
+        l: 0,
+        c: 0,
+      },
     };
   }
 
   componentDidUpdate(prevProps: CandlestickChartProps) {
     if (prevProps.days !== this.props.days) {
       this.setState({ updatedChartData: generateData(this.props.days) });
-      if (this.props.days === 30) {
-        setTimeout(() => {
-          this.props.onChartBuilt();
-        }, 1000);
-      }
+      chartObserver.setDays(this.props.days);
     }
   }
 
@@ -105,9 +90,11 @@ export class CandlestickChart extends Component<CandlestickChartProps, Candlesti
       this.setState({ selectedCandle, isModalOpen: true });
     }
   };
+
   handleCloseModal = () => {
     this.setState({ isModalOpen: false });
   };
+
   handleSaveChanges = (updatedCandle: CandleData & { index: number }) => () => {
     const updatedData = [...this.state.updatedChartData];
     updatedData[updatedCandle.index] = {
@@ -128,8 +115,39 @@ export class CandlestickChart extends Component<CandlestickChartProps, Candlesti
     }
   };
 
+  handleOpenAddModal = () => {
+    this.setState({ isAddModalOpen: true });
+  };
+
+  handleCloseAddModal = () => {
+    this.setState({ isAddModalOpen: false, newCandle: { x: Date.now(), o: 0, h: 0, l: 0, c: 0 } });
+  };
+
+  handleNewCandleChange = (e: ChangeEvent<HTMLInputElement>, key: keyof CandleData) => {
+    this.setState((prevState) => ({
+      newCandle: {
+        ...prevState.newCandle,
+        [key]: parseFloat(e.target.value),
+      },
+    }));
+  };
+
+  handleSaveNewCandle = () => {
+    const { newCandle, updatedChartData } = this.state;
+    const newCandleData = {
+      ...newCandle,
+      s: [newCandle.o, newCandle.c],
+    } as CandleData;
+    this.setState({
+      updatedChartData: [...updatedChartData, newCandleData],
+      isAddModalOpen: false,
+      newCandle: { x: Date.now(), o: 0, h: 0, l: 0, c: 0 },
+    });
+    chartObserver.setDays([...updatedChartData, newCandleData].length);
+  };
+
   render() {
-    const { selectedCandle, isModalOpen, updatedChartData } = this.state;
+    const { selectedCandle, isModalOpen, updatedChartData, isAddModalOpen, newCandle } = this.state;
 
     const data = {
       labels: updatedChartData.map((item) => new Date(item.x).toLocaleDateString()),
@@ -138,10 +156,7 @@ export class CandlestickChart extends Component<CandlestickChartProps, Candlesti
           label: 'Stock Prices',
           data: updatedChartData,
           backgroundColor: updatedChartData.map((item) =>
-            item.c > item.o ? 'rgba(75, 192, 192, 0.2)' : 'rgba(255, 99, 132, 0.2)',
-          ),
-          borderColor: updatedChartData.map((item) =>
-            item.c > item.o ? 'rgba(75, 192, 192, 1)' : 'rgba(255, 99, 132, 1)',
+            item.c > item.o ? themeColors.dark.colors.green : themeColors.dark.colors.red,
           ),
           borderWidth: 1,
         },
@@ -149,21 +164,32 @@ export class CandlestickChart extends Component<CandlestickChartProps, Candlesti
     };
 
     return (
-      <ChartCard>
-        <ChartBox>
-          <Bar data={data} options={{ ...options, onClick: this.handleChartClick }} />
-          <Modal isOpen={isModalOpen} onClose={this.handleCloseModal}>
-            {selectedCandle && (
+      <>
+        <Button onClick={this.handleOpenAddModal}>Add day</Button>
+        <ChartCard>
+          <ChartBox>
+            <Bar data={data} options={{ ...options, onClick: this.handleChartClick }} />
+            <Modal isOpen={isModalOpen} onClose={this.handleCloseModal}>
+              {selectedCandle && (
+                <CandleEditForm
+                  selectedCandle={selectedCandle}
+                  onChange={this.handleCandleChange}
+                  onSave={this.handleSaveChanges({ ...selectedCandle, index: selectedCandle.index! })}
+                  onCancel={this.handleCloseModal}
+                />
+              )}
+            </Modal>
+            <Modal isOpen={isAddModalOpen} onClose={this.handleCloseAddModal}>
               <CandleEditForm
-                selectedCandle={selectedCandle}
-                onChange={this.handleCandleChange}
-                onSave={this.handleSaveChanges({ ...selectedCandle, index: selectedCandle.index! })}
-                onCancel={this.handleCloseModal}
+                selectedCandle={newCandle as CandleData}
+                onChange={this.handleNewCandleChange}
+                onSave={this.handleSaveNewCandle}
+                onCancel={this.handleCloseAddModal}
               />
-            )}
-          </Modal>
-        </ChartBox>
-      </ChartCard>
+            </Modal>
+          </ChartBox>
+        </ChartCard>
+      </>
     );
   }
 }

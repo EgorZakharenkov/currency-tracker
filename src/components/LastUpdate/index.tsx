@@ -12,7 +12,7 @@ export const LastUpdate: FC<LastUpdateProps> = ({ time }) => {
     <Wrapper>
       <WrapperInfo>
         <img src={images.circle} alt="circle icon" />
-        <SubTitle color="lightGray" size="md">
+        <SubTitle color="primary" size="md">
           Last updated at {time}pm{' '}
         </SubTitle>
       </WrapperInfo>

@@ -4,7 +4,7 @@ import { CandlestickChart } from '@/components/CandlestickChart';
 import { Notification } from '@/components/Notification';
 import { Select } from '@/components/ui/Select';
 import { Container } from '@/pages/TimeLine/styled';
-import { chartObserver } from '@/utils/observer';
+import { chartObserver, displayNotify } from '@/utils/observer';
 
 interface Option {
   value: number;
@@ -16,7 +16,7 @@ interface TimeLineState {
 }
 
 export class TimeLine extends Component<{}, TimeLineState> {
-  options: Option[] = [{ value: 7 }, { value: 15 }, { value: 30 }];
+  options: Option[] = [{ value: 7 }, { value: 15 }, { value: 29 }, { value: 30 }];
 
   constructor(props: {}) {
     super(props);
@@ -27,11 +27,13 @@ export class TimeLine extends Component<{}, TimeLineState> {
   }
 
   componentDidMount() {
-    chartObserver.subscribe(this.handleChartBuilt);
+    displayNotify.subscribe(this.handleChartBuilt);
+    chartObserver.subscribe(displayNotify);
   }
 
   componentWillUnmount() {
-    chartObserver.unsubscribe(this.handleChartBuilt);
+    displayNotify.unsubscribe(this.handleChartBuilt);
+    chartObserver.unsubscribe(displayNotify);
   }
 
   handleSelected = (value: number) => {
@@ -46,17 +48,13 @@ export class TimeLine extends Component<{}, TimeLineState> {
     }, 3000);
   };
 
-  handleChartObserverNotify = () => {
-    chartObserver.notify();
-  };
-
   render() {
     const { selected, notificationVisible } = this.state;
 
     return (
       <Container>
         <Select options={this.options} setSelected={this.handleSelected} selected={selected} />
-        <CandlestickChart days={selected} onChartBuilt={this.handleChartObserverNotify} />
+        <CandlestickChart days={selected} />
         <Notification message="The 30-day schedule has been successfully completed!" isVisible={notificationVisible} />
       </Container>
     );

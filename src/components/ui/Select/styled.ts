@@ -1,54 +1,60 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface OptionListProps {
   isOpen?: boolean;
 }
 export const ContainerSelect = styled.div`
-  position: relative;
-  width: ${({ theme }) => theme.widths.select}px;
-  border-radius: ${({ theme }) => theme.paddings.xs}px;
-  background-color: ${({ theme }) => theme.colors.black};
-  cursor: pointer;
+  ${({ theme }) => css`
+    position: relative;
+    width: ${theme.widths.select}px;
+    border-radius: ${theme.paddings.xs}px;
+    background-color: ${theme.colors.secondary};
+    cursor: pointer;
+  `}
 `;
 
 export const ContainerValue = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 ${({ theme }) => theme.paddings.sm}px;
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 ${theme.paddings.sm}px;
 
-  span {
-    color: ${({ theme }) => theme.colors.white};
-    font-size: ${({ theme }) => theme.fontSizes.xs}px;
-    padding: ${({ theme }) => theme.paddings.xs}px ${({ theme }) => theme.paddings.sm}px;
-  }
+    span {
+      color: ${theme.colors.primary};
+      font-size: ${theme.fontSizes.xs}px;
+      padding: ${theme.paddings.xs}px ${theme.paddings.sm}px;
+    }
+  `}
 `;
 export const OptionsList = styled.div<OptionListProps>`
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  max-height: ${({ isOpen, theme }) => (isOpen ? theme.heights.select : '0')}px;
-  display: flex;
-  flex-direction: column;
-  transition: max-height 0.3s ease;
-  overflow: auto;
-  background-color: ${({ theme }) => theme.colors.black};
-  z-index: 10;
+  ${({ theme, isOpen }) => css`
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: ${isOpen ? theme.heights.select : '0'}px;
+    display: flex;
+    flex-direction: column;
+    transition: max-height 0.3s ease;
+    overflow: auto;
+    background-color: ${theme.colors.secondary};
+    z-index: 10;
 
-  &::-webkit-scrollbar {
-    width: ${({ theme }) => theme.paddings.xs}px;
-  }
+    &::-webkit-scrollbar {
+      width: ${theme.paddings.xs}px;
+    }
 
-  &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.white};
-    border-radius: ${({ theme }) => theme.paddings.xs}px;
-  }
+    &::-webkit-scrollbar-track {
+      background: ${theme.colors.primary};
+      border-radius: ${theme.paddings.xs}px;
+    }
 
-  &::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.lightBlack};
-    border-radius: ${({ theme }) => theme.paddings.xs}px;
-  }
+    &::-webkit-scrollbar-thumb {
+      background: ${theme.colors.lightBlack};
+      border-radius: ${theme.paddings.xs}px;
+    }
+  `}
 `;
 export const Arrow = styled.img<OptionListProps>`
   transition: 0.3s;

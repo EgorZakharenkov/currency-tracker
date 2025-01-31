@@ -46,13 +46,18 @@ export const theme = {
     lg: '12',
     xl: '15',
   },
+  media: {
+    tablet: '860',
+    mobile: '600',
+  },
 };
 
 export const darkTheme = {
   colors: {
-    background: '#030304',
     white: '#ffffff',
-    black: '#000000',
+    background: '#030304',
+    primary: '#ffffff',
+    secondary: '#000000',
     gray: '#898989',
     lightGray: '#D9D9D9',
     red: '#EA3943',
@@ -65,12 +70,15 @@ export const darkTheme = {
     backgroundCard: '#202025',
     overlay: '#00000080',
     spinner: '#3498db',
+    search: '#1B2028',
   },
 };
 export const lightTheme = {
   colors: {
-    white: '#000000',
-    black: '#ffffff',
+    white: '#ffffff',
+    background: '#f1f1f1',
+    primary: '#000000',
+    secondary: '#ffffff',
     gray: '#898989',
     lightGray: '#D9D9D9',
     red: '#EA3943',
@@ -78,9 +86,10 @@ export const lightTheme = {
     orange: '#FF971D',
     lightBlack: '#dddbdb',
     gradient: 'linear-gradient(92.29deg, #00CE2C, #AEDF23, #A3DC00);',
-    gradientBg: 'linear-gradient(225deg, #121212 11.632%, #24794000 91.137%)',
+    gradientBg: 'linear-gradient(225deg, #0a0a0a 0%, #003300 50%, #0a0a0a 100%);',
     backgroundCard: '#202025',
     overlay: '#00000080',
     spinner: '#3498db',
+    search: '#1B2028',
   },
 };

@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const spin = keyframes`
   0% {
@@ -16,10 +16,12 @@ export const LoaderWrapper = styled.div`
 `;
 
 export const Spinner = styled.div`
-  width: ${({ theme }) => theme.widths.switcher}px;
-  height: ${({ theme }) => theme.widths.switcher}px;
-  border: 5px solid ${({ theme }) => theme.colors.lightGray};
-  border-top: 5px solid ${({ theme }) => theme.colors.spinner};
-  border-radius: 50%;
-  animation: ${spin} 1s linear infinite;
+  ${({ theme }) => css`
+    width: ${theme.heights.switcher}px;
+    height: ${theme.heights.switcher}px;
+    border: 5px solid ${theme.colors.lightGray};
+    border-top: 5px solid ${theme.colors.spinner};
+    border-radius: 50%;
+    animation: ${spin} 1s linear infinite;
+  `}
 `;

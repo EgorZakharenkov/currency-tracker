@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const WrapperApp = styled.div`
   display: flex;
@@ -6,7 +6,14 @@ export const WrapperApp = styled.div`
   min-height: 100vh;
 `;
 export const Content = styled.div`
-  flex: 1;
-  max-width: ${({ theme }) => theme.widths.container}px;
-  margin: 0 auto;
+  ${({ theme }) => css`
+    flex: 1;
+    max-width: ${theme.widths.container}px;
+    margin: 0 auto;
+
+    @media (max-width: ${theme.widths.container}px) {
+      max-width: 100%;
+      padding: ${theme.paddings.gap30}px;
+    }
+  `}
 `;
