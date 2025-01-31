@@ -1,10 +1,9 @@
 import { Component } from 'react';
 
-import styled from 'styled-components';
-
 import { Map } from '@/components/Map';
 import { Search } from '@/components/Search';
 import { Suggestion } from '@/components/Suggestion';
+import { BankContainer, SearchContainer } from '@/pages/Bank/styled';
 import { SubTitle } from '@/styles/styled';
 
 interface BankState {
@@ -54,14 +53,3 @@ export class Bank extends Component<{}, BankState> {
     );
   }
 }
-export const BankContainer = styled.div`
-  margin-top: ${({ theme }) => theme.paddings.gap70}px;
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.paddings.xl}px;
-  align-items: center;
-`;
-
-export const SearchContainer = styled.div`
-  position: relative;
-`;

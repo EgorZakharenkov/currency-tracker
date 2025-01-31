@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 interface ModalProps {
   isOpen: boolean;
 }
@@ -21,11 +21,13 @@ export const Overlay = styled.div<ModalProps>`
 `;
 
 export const ModalContainer = styled.div`
-  background: ${({ theme }) => theme.colors.backgroundCard};
-  padding: ${({ theme }) => theme.paddings.lg}px;
-  border-radius: ${({ theme }) => theme.borderRadius.sm}px;
-  max-width: ${({ theme }) => theme.widths.modal}px;
-  margin: ${({ theme }) => theme.paddings.xs}px;
-  width: 100%;
-  position: relative;
+  ${({ theme }) => css`
+    background: ${theme.colors.backgroundCard};
+    padding: ${theme.paddings.lg}px;
+    border-radius: ${theme.borderRadius.sm}px;
+    max-width: ${theme.widths.modal}px;
+    margin: ${theme.paddings.xs}px;
+    width: 100%;
+    position: relative;
+  `}
 `;

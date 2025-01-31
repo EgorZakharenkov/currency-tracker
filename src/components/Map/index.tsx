@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react';
 
 import maplibregl from 'maplibre-gl';
-import styled from 'styled-components';
 
 import 'maplibre-gl/dist/maplibre-gl.css';
+
+import { MapContainer, MapWrap } from '@/components/Map/styled';
 
 interface MapProps<T extends { name: string; coordinates: number[] }> {
   lng: number;
@@ -54,16 +55,3 @@ export const Map = <T extends { name: string; coordinates: number[] }>({ lng, la
     </MapWrap>
   );
 };
-
-export const MapWrap = styled.div`
-  margin-top: ${({ theme }) => theme.paddings.xl}px;
-  position: relative;
-  width: calc(1280px - 77px);
-  height: calc(70vh - 77px);
-`;
-
-export const MapContainer = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-`;

@@ -1,18 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 interface NotificationProps {
   isVisible: boolean;
 }
 export const NotificationWrapper = styled.div<NotificationProps>`
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: ${({ theme }) => theme.paddings.sm}px ${({ theme }) => theme.paddings.md}px;
-  background-color: ${({ theme }) => theme.colors.green};
-  color: ${({ theme }) => theme.colors.primary};
-  border-radius: ${({ theme }) => theme.borderRadius.sm}px;
-  font-size: ${({ theme }) => theme.fontSizes.sm}px;
-  display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  transition: opacity 0.3s ease;
+  ${({ theme, isVisible }) => css`
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: ${theme.paddings.sm}px ${theme.paddings.md}px;
+    background-color: ${theme.colors.green};
+    color: ${theme.colors.primary};
+    border-radius: ${theme.borderRadius.sm}px;
+    font-size: ${theme.fontSizes.sm}px;
+    display: ${isVisible ? 'block' : 'none'};
+    opacity: ${isVisible ? 1 : 0};
+    transition: opacity 0.3s ease;
+  `}
 `;

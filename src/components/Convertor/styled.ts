@@ -1,39 +1,45 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ConverterContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.paddings.lg}px;
-  width: 100%;
-  margin: 0 auto;
-  padding: ${({ theme }) => theme.paddings.lg}px;
-  border-radius: ${({ theme }) => theme.borderRadius.md}px;
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    gap: ${theme.paddings.lg}px;
+    width: 100%;
+    margin: 0 auto;
+    padding: ${theme.paddings.lg}px;
+    border-radius: ${theme.borderRadius.md}px;
+  `}
 `;
 
 export const CurrentCurrencyBlock = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: ${({ theme }) => theme.fontSizes.xs}px;
-  color: ${({ theme }) => theme.colors.white};
+  ${({ theme }) => css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: ${theme.fontSizes.xs}px;
+    color: ${theme.colors.white};
 
-  @media screen and (max-width: ${({ theme }) => theme.media.mobile}px) {
-    flex-direction: column;
-    align-items: start;
-    gap: ${({ theme }) => theme.paddings.md}px;
-  }
+    @media screen and (max-width: ${theme.media.mobile}px) {
+      flex-direction: column;
+      align-items: start;
+      gap: ${theme.paddings.md}px;
+    }
+  `}
 `;
 
 export const ResultBlock = styled.div`
-  margin-top: ${({ theme }) => theme.paddings.sm}px;
-  font-size: ${({ theme }) => theme.fontSizes.xs}px;
-  font-weight: ${({ theme }) => theme.weights.lg};
-  color: ${({ theme }) => theme.colors.white};
-  text-align: center;
+  ${({ theme }) => css`
+    margin-top: ${theme.paddings.sm}px;
+    font-size: ${theme.fontSizes.xs}px;
+    font-weight: ${theme.weights.lg};
+    color: ${theme.colors.white};
+    text-align: center;
 
-  @media screen and (max-width: ${({ theme }) => theme.media.mobile}px) {
-    text-align: start;
-  }
+    @media screen and (max-width: ${theme.media.mobile}px) {
+      text-align: start;
+    }
+  `}
 `;
 export const WrapperBtns = styled.div`
   display: flex;
@@ -41,8 +47,10 @@ export const WrapperBtns = styled.div`
   gap: ${({ theme }) => theme.paddings.gap100}px;
 `;
 export const Button = styled.button`
-  padding: ${({ theme }) => theme.paddings.sm}px ${({ theme }) => theme.paddings.lg}px;
-  background: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.secondary};
-  border-radius: ${({ theme }) => theme.borderRadius.md}px;
+  ${({ theme }) => css`
+    padding: ${theme.paddings.sm}px ${theme.paddings.lg}px;
+    background: ${theme.colors.primary};
+    color: ${theme.colors.secondary};
+    border-radius: ${theme.borderRadius.md}px;
+  `}
 `;
